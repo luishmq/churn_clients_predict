@@ -1,17 +1,17 @@
 import pickle
 import os
 import pandas as pd
-from flask                    import Flask, request, Response
-from churn_prediction         import churn_prediction
+from flask                                    import Flask, request, Response
+from churn_prediction.churn_prediction        import churn_prediction
 
 # loading model
-model = pickle.load( open( '/Users/luishmq/Documents/repos/churn_prediction/churn_clients_predict/models/model_churn.pkl', 'rb') )
+model = pickle.load( open( '/Users/luishmq/Documents/repos/churn_prediction/churn_prediction/models/model_churn.pkl', 'rb') )
 
 # initialize API
 app = Flask( __name__ )
 
 @app.route( '/churn_prediction/predict', methods=['POST'] )
-def churn_prediction():
+def churn_prediction_predict():
     test_json = request.get_json()
    
     if test_json: # there is data

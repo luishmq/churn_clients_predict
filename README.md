@@ -1,38 +1,20 @@
-# Churn Prediction
+# Previsão - Churn de clientes
 
-## Project to make predictions about the clients churn
+![](reports/figures/churn_img2.png)
 
-#### This project was made by Luis Henrique.
+Churn de clientes é uma medida do número de contas que deixam de comprar, seja cancelando contrato ou não renovando. Em alguns casos, simplesmente parando de fazer pedidos, o que, de imediato, representa uma perda de receita. Nesse sentido, é uma métrica fundamental para obter respostas estratégicas sobre o negócio, especialmente quando se trata de pensar e agir com vistas a médio e longo prazo. 
 
-# 1. Business Problem.
+Dessa forma, prever essa rotatividade de clientes é extremamente importante para qualquer negócio, pois a maioria das empresas com alto faturamento são aquelas que possuem altas taxas de retenção. Sean Ellis e Morgan Brown indicam em seu livro, Hacking Growth, que com apenas 5% de taxa de retenção, uma empresa pode aumentar de 25% a 95% de seu lucro.
 
-# 2. Business Assumptions.
+Os dados para análise foram disponibilizados dentro da plataforma de competições de dados [Kaggle](https://www.kaggle.com/datasets/mervetorkan/churndataset).
 
-# 3. Solution Strategy
+# 1.0 Problema de Negócio
 
-My strategy to solve this challenge was:
+# 2.0 Premissas de Negócio
 
-**Step 01. Data Description:**
+# 3.0 Estratégia da Solução
 
-**Step 02. Feature Engineering:**
-
-**Step 03. Data Filtering:**
-
-**Step 04. Exploratory Data Analysis:**
-
-**Step 05. Data Preparation:**
-
-**Step 06. Feature Selection:**
-
-**Step 07. Machine Learning Modelling:**
-
-**Step 08. Hyperparameter Fine Tunning:**
-
-**Step 09. Convert Model Performance to Business Values:**
-
-**Step 10. Deploy Modelo to Production:**
-
-# 4. Top 3 Data Insights
+# 4.0 Top 3 Insights
 
 **Hypothesis 01:**
 
@@ -46,18 +28,12 @@ My strategy to solve this challenge was:
 
 **True/False.**
 
-# 5. Machine Learning Model Applied
+# 5.0 Machine Learning 
 
-# 6. Machine Learning Modelo Performance
+# 6.0 Resultados Financeiros
 
-# 7. Business Results
+# 7.0 Conclusões
 
-# 8. Conclusions
+# 8.0 Lições Aprendidas
 
-# 9. Lessons Learned
-
-# 10. Next Steps to Improve
-
-# LICENSE
-
-# All Rights Reserved - Comunidade DS 2023
+# 9.0 Próximos Passos

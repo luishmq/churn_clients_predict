@@ -9,15 +9,19 @@ Dessa forma, prever essa rotatividade de clientes é extremamente importante par
 Os dados para análise foram disponibilizados dentro da plataforma de competições de dados [Kaggle](https://www.kaggle.com/datasets/mervetorkan/churndataset).
 
 # 1.0 Problema de Negócio
-O CFO de uma empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada.
+TopBank é uma empresa de serviços bancários que opera principalmente em países europeus oferecendo produtos financeiros, desde contas bancárias a investimentos, passando por alguns tipos de seguros e produto de investimento. O principal produto da empresa é uma conta bancária, na qual o cliente pode depositar seu salário, fazer saques, depósitos e transferências para outras contas. Essa conta bancária tem prazo de 12 meses, ou seja, o cliente precisa renovar o contrato da conta para continuar utilizando pelos próximos 12 meses.
 
-Nesse sentido, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco, possibilitando que o CFO consulte as previsões por meio do aplicativo Google Sheets.
+O CFO da empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada. Nesse sentido, tornaria-se possível a viabilização de estratrégias por parte do time de marketing, a fim de maximizar o ROI( Return on investment )dos clientes. 
+
+Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco, possibilitando que o CFO consulte as previsões por meio do aplicativo Google Sheets.
 
 # 2.0 Premissas de Negócio
 
 Para a construção da solução, foram consideradas as seguintes premissas:
 
-- Desconsiderar os outliers encontrados, haja vista que são importantes para entender a relação entre 2 ou mais variáveis
+- Abordagem de combate ao churn: Uma medida para combater o churn é dar um incentivo financeiro aos clientes para que considerem a renovação de seus contratos. No nosso caso, os cartões-presente foram selecionados para serem o incentivo financeiro do plano TopBank contra o problema do churning.
+
+- Orçamento de incentivo financeiro: a empresa permite que o time de marketing possa gastar apenas uma quantia máxima de $ 10.000 em cartões-presente, o que nos obriga a selecionar apenas alguns clientes para maximizar o ROI (Return Over Investiment).
 
 ## 2.1 Descrição dos dados
 
@@ -40,7 +44,7 @@ Para a construção da solução, foram consideradas as seguintes premissas:
 
 # 3.0 Estratégia da Solução
 
-![](reports/figures/.png)
+![](reports/figures/mind_map.png)
 
 A estratégia utiliza o método CRISP-DS, que consiste em 9 passos ciclicos, onde a cada iteração dos nove passos, o resultado de negócio vai sendo aperfeiçoado, visando entregas cada vez mais rápidas e cada vez com mais qualidade e acertivas, possibilitando assim que as equipes que irão utilizar os resultados desenvolvidos tenham um produto um produto minimamente utilizável na primeira entrega e que é aperfeiçoado ao longo do tempo.
 
@@ -85,13 +89,21 @@ Para fazer a previsão de vendas, foram utilizados 5 algoritmos de Machine Learn
 - KNN
 Após os testes com os algoritmos selecionados, foi utilizado a técnica de Cross Validation para validar os resultados e garantir a performance real de cada uma dos modelo utilizados.
 
-Além disso, foi implementado o método de seleção de features Boruta para auxiliar na escolha das features mais importantes, porém notou-se uma queda drástica de performance e qualidade do modelo. Assim, o método não foi utilizado.
+Além disso, foi implementado o método de seleção de features Boruta para auxiliar na escolha das features mais importantes, porém notou-se uma queda de performance e qualidade do modelo. Assim, o método não foi utilizado.
 
-Após fazer o treinamento dos modelos sobre os dados de treino e ter feito o Cross-Validation, bem como analisar a acurácia, f1_score, recall e precision, optei por usar o Random Forest Classifier.
+Após fazer o treinamento dos modelos sobre os dados de treino e ter feito o Cross-Validation, bem como analisar a acurácia, f1_score, recall e precision, optei por usar o XGBoost Classifier por apresentar performances incríveis, beirando os 91% com o fine tuning na métrica f1_score.
 
-![](reports/figures/rfc_score.png)
+Ranking algoritmos sem Cross Validation:
 
-![](reports/figures/cross_perf.png)
+![](reports/figures/single_rank_performance.png)
+
+Ranking algoritmos com Cross Validation:
+
+![](reports/figures/crossval_rank_performance.png)
+
+Após implementar o Hyperparamether Fine Tuning, utilizando o Grid Search, XGBoost apresentou as seguintes métricas:
+
+![](reports/figures/final_model.png)
 
 ## 5.2 Principais Gráficos
 
@@ -99,9 +111,19 @@ Após fazer o treinamento dos modelos sobre os dados de treino e ter feito o Cro
 
 A curva de ganhos cumulativos é uma curva de avaliação que avalia o desempenho do modelo e compara os resultados com a escolha aleatória ( Baseline ). Mostra a porcentagem de alvos atingidos ao considerar um determinado percentual da população com maior probabilidade de ser alvo de acordo com o modelo.
 
-![](reports/figures/cumulative_gain.png)
+![](reports/figures/cumulative_gain2.png)
 
 ### 5.2.2 Lift Curves
+
+O gráfico de curva de elevação é derivado do gráfico de ganhos cumulativos. Os valores no eixo y correspondem à razão do ganho cumulativo de cada curva para a linha de base.
+
+![](reports/figures/lift_curve.png)
+
+### 5.2.3 ROC AUC Curve
+
+A curva ROC mostra o desempenho de um modelo em todos os limites de classificação. A área sob a curva mostra o quanto o algoritmo é capaz de distinguir entre as classes.
+
+![](reports/figures/roc_auc_curve.png)
 
 # 6.0 Resultados Financeiros
 
@@ -117,10 +139,12 @@ Outro ponto importante de destacar é que com a solução criada, o CFO pode ago
 
 - Priorizar tarefas e soluções
 - Desenvolver soluções de forma cíclica, entregando assim resultados de forma mais ágil e eficiente
+- Gerenciando dados desbalanceados com SMOTE
 - Possibilidade de consulta ágil e profissional dos dados preditivos no aplicativo Google Sheets
 
 # 9.0 Próximos Passos
 
-- Responder a novas hipóteses de negócios para entender melhor os dados e as relações de recursos e criar novas hipóteses para verificar outras relações de recursos.
-- Aplicar técnicas de programação para melhorar o desempenho da solução criada.
-- Criação de novas funcionalidades para enriquecer os dados.
+- Responder a novas hipóteses de negócios para entender melhor os dados e as relações de recursos e criar novas hipóteses para verificar outras relações de recursos
+- Aplicar técnicas de programação para melhorar o desempenho da solução criada
+- Antecipação da divisão entre treino e teste para antes da preparação dos dados
+- Criação de novas funcionalidades para enriquecer os dados

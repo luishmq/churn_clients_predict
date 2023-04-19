@@ -19,9 +19,14 @@ Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, prov
 
 Para a construção da solução, foram consideradas as seguintes premissas:
 
-- Abordagem de combate ao churn: Uma medida para combater o churn é dar um incentivo financeiro aos clientes para que considerem a renovação de seus contratos. No nosso caso, os cartões-presente foram selecionados para serem o incentivo financeiro do plano TopBank contra o problema do churning.
+- Receita do TopBank: De acordo com a equipe de análise do TopBank, cada cliente com conta bancária retorna um valor monetário de 3% do valor estimado do salário se o salário for menor que a média e 5% se esse salário for maior que a média, durante o período atual de seu contrato de conta. Este valor é calculado anualmente.
 
-- Orçamento de incentivo financeiro: a empresa permite que o time de marketing possa gastar apenas uma quantia máxima de $ 10.000 em cartões-presente, o que nos obriga a selecionar apenas alguns clientes para maximizar o ROI (Return Over Investiment).
+- Abordagem de combate ao churn: Uma medida para combater o churn é dar um incentivo financeiro aos clientes para que considerem a renovação de seus contratos. No nosso caso, os cupons de desconto foram selecionados para serem o incentivo financeiro do plano TopBank contra o problema do churning.
+
+- Orçamento de incentivo financeiro: a empresa permite que o time de marketing possa gastar apenas uma quantia máxima de $ 10.000 em cupons, o que nos obriga a selecionar apenas alguns clientes para maximizar o ROI (Return Over Investiment).
+
+- Destino dos cartões-presente: De acordo com o orçamento apresentado pela equipe de marketing, decidi por selecionar entre os 100, 200 e 400 primeiros clientes com maior probabilidade de churn, cupons de desconto no valor de 100, 50 e 25, respectivamente.
+
 
 ## 2.1 Descrição dos dados
 

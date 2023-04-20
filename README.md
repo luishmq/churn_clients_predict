@@ -11,7 +11,7 @@ Os dados para análise foram disponibilizados dentro da plataforma de competiç�
 # 1.0 Problema de Negócio
 TopBank é uma empresa de serviços bancários que opera principalmente em países europeus oferecendo produtos financeiros, desde contas bancárias a investimentos, passando por alguns tipos de seguros e produto de investimento. O principal produto da empresa é uma conta bancária, na qual o cliente pode depositar seu salário, fazer saques, depósitos e transferências para outras contas. Essa conta bancária tem prazo de 12 meses, ou seja, o cliente precisa renovar o contrato da conta para continuar utilizando pelos próximos 12 meses.
 
-O CFO da empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada. Nesse sentido, tornaria-se possível a viabilização de estratrégias por parte do time de marketing, a fim de maximizar o ROI( Return on investment )dos clientes. 
+O CFO da empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada. Nesse sentido, tornaria-se possível a viabilização de estratrégias por parte do time de marketing, a fim de maximizar o ROI( Return on investment ) dos clientes. 
 
 Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco, possibilitando que o CFO consulte as previsões por meio do aplicativo Google Sheets.
 
@@ -25,7 +25,7 @@ Para a construção da solução, foram consideradas as seguintes premissas:
 
 - Orçamento de incentivo financeiro: a empresa permite que o time de marketing possa gastar apenas uma quantia máxima de $ 10.000 em cupons, o que nos obriga a selecionar apenas alguns clientes para maximizar o ROI (Return Over Investiment).
 
-- Destino dos cartões-presente: De acordo com o orçamento apresentado pela equipe de marketing, decidi por selecionar entre os 100, 200 e 400 primeiros clientes com maior probabilidade de churn, cupons de desconto no valor de 100, 50 e 25, respectivamente.
+- Destino dos cupons: De acordo com o orçamento apresentado pela equipe de marketing, decidi por selecionar entre os 100, 200 e 400 primeiros clientes com maior probabilidade de churn, cupons de desconto no valor de 100, 50 e 25, respectivamente.
 
 
 ## 2.1 Descrição dos dados
@@ -132,9 +132,17 @@ A curva ROC mostra o desempenho de um modelo em todos os limites de classificaç
 
 # 6.0 Resultados Financeiros
 
+Dentre os cupons sugeridos, optei pelo cupom de $ 25, uma vez que notou-se um ROI ( Return on Investment) mais significativo entre os demais, apresentando um valor bruto, como média entre os cenários analisados, de $ 489070.00, o que representa um ROI de 4891%.
+
+![](reports/figures/cupom_25.png)
+
+![](reports/figures/bss_conclusion.png)
+
 # 7.0 Conclusões
 
-Conforme pôde ser verificado, o projeto resolveu o problema inicial, que era a previsão do churn de clientes do banco.
+Conforme pôde ser verificado, o projeto resolveu o problema inicial, que era a previsão do churn de clientes do banco, a partir de um modelo de classificação. O modelo escolhido foi o XGBoost, que alcançou excelentes métricas ( 91% no F1 score ).
+
+Consegui também formular um plano de ação para resolver o problema do churning com base em dar aos clientes cupons de desconto de acordo com sua probabilidade de churn e o maximização do ROI dos clientes.
 
 Ademais, concluimos importantes insights desconhecidos pelo CFO sobre o negócio e estabelecemos estratégias financeiras para não somente controlar a taxa de churn, como também melhorá-la no ponto de vista do negócio.
 

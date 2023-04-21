@@ -13,7 +13,7 @@ TopBank é uma empresa de serviços bancários que opera principalmente em país
 
 O CFO da empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada. Nesse sentido, tornaria-se possível a viabilização de estratrégias por parte do time de marketing, a fim de maximizar o ROI( Return on investment ) dos clientes. 
 
-Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco, possibilitando que o CFO consulte as previsões por meio do aplicativo Google Sheets.
+Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco em probalidade, possibilitando que o CFO consulte as probabilidades de cada cliente via API.
 
 # 2.0 Premissas de Negócio
 
@@ -92,6 +92,7 @@ Para fazer a previsão de vendas, foram utilizados 5 algoritmos de Machine Learn
 - Extra Trees Classifier
 - XGBoost Classifier
 - KNN
+
 Após os testes com os algoritmos selecionados, foi utilizado a técnica de Cross Validation para validar os resultados e garantir a performance real de cada uma dos modelo utilizados.
 
 Além disso, foi implementado o método de seleção de features Boruta para auxiliar na escolha das features mais importantes, porém notou-se uma queda de performance e qualidade do modelo. Assim, o método não foi utilizado.
@@ -146,18 +147,18 @@ Consegui também formular um plano de ação para resolver o problema do churnin
 
 Ademais, concluimos importantes insights desconhecidos pelo CFO sobre o negócio e estabelecemos estratégias financeiras para não somente controlar a taxa de churn, como também melhorá-la no ponto de vista do negócio.
 
-Outro ponto importante de destacar é que com a solução criada, o CFO pode agora consultar a taxa de churn utilizando o aplicativo Google Sheets, uma maneira, portanto, mais ágil e fácil para a tomada de decisão.
+Outro ponto importante de destacar é que com a solução criada, o CFO pode agora consultar a taxa de churn via API, uma maneira, portanto, mais ágil e fácil para a tomada de decisão.
 
 # 8.0 Lições Aprendidas
 
 - Priorizar tarefas e soluções
 - Desenvolver soluções de forma cíclica, entregando assim resultados de forma mais ágil e eficiente
 - Gerenciando dados desbalanceados com SMOTE
-- Possibilidade de consulta ágil e profissional dos dados preditivos no aplicativo Google Sheets
+- Possibilidade de consulta ágil e profissional dos dados preditivos via API
 
 # 9.0 Próximos Passos
 
 - Responder a novas hipóteses de negócios para entender melhor os dados e as relações de recursos e criar novas hipóteses para verificar outras relações de recursos
 - Aplicar técnicas de programação para melhorar o desempenho da solução criada
 - Antecipação da divisão entre treino e teste para antes da preparação dos dados
-- Criação de novas funcionalidades para enriquecer os dados
+- Criação de novas funcionalidades para enriquecer os dados, como consulta via Google Sheets

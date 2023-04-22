@@ -141,9 +141,9 @@ Dentre os cupons sugeridos, optei pelo cupom de $ 25, uma vez que notou-se um RO
 
 # 7.0 Conclusões
 
-Conforme pôde ser verificado, o projeto resolveu o problema inicial, que era a previsão do churn de clientes do banco, a partir de um modelo de classificação. O modelo escolhido foi o XGBoost, que alcançou excelentes métricas ( 91% no F1 score ).
+Conforme pôde ser verificado, o projeto resolveu o problema inicial, que era a previsão do churn de clientes do banco, a partir de um modelo de classificação. O modelo escolhido foi o XGBoost, que alcançou excelentes métricas ( 91% no F1 score, por exemplo).
 
-Consegui também formular um plano de ação para resolver o problema do churning com base em dar aos clientes cupons de desconto de acordo com sua probabilidade de churn e o maximização do ROI dos clientes.
+Consegui também formular um plano de ação para resolver o problema do churning com base no envio de cupons de desconto aos clientes de acordo com sua probabilidade de churn e a maximização do ROI.
 
 Ademais, concluimos importantes insights desconhecidos pelo CFO sobre o negócio e estabelecemos estratégias financeiras para não somente controlar a taxa de churn, como também melhorá-la no ponto de vista do negócio.
 

@@ -1,4 +1,4 @@
-# Previsão - Churn de clientes
+# Previsão - Churn de clientes 🔥
 
 ![](reports/figures/churn_img2.png)
 

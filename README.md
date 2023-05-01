@@ -15,7 +15,7 @@ The CFO of the banking company has the need to study and understand the possible
 
 In this way, the idea of this project is to assist the CFO in decision making, providing forecast results for each bank customer in probability, enabling the CFO to consult the probabilities of each customer via API.
 
-# 2.0 Business Premises
+# 2.0 Business Assumptions
 
 For the construction of the solution, the following assumptions were considered:
 

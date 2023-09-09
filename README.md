@@ -1,57 +1,57 @@
-# Previsão - Churn de clientes 🔥
+# Forecast - Custumer Churn 🔥
 
 ![](reports/figures/churn_img2.png)
 
-Churn de clientes é uma medida do número de contas que deixam de comprar, seja cancelando contrato ou não renovando. Em alguns casos, simplesmente parando de fazer pedidos, o que, de imediato, representa uma perda de receita. Nesse sentido, é uma métrica fundamental para obter respostas estratégicas sobre o negócio, especialmente quando se trata de pensar e agir com vistas a médio e longo prazo. 
+Customer churn is a measure of the number of accounts that stop buying, either by canceling a contract or not renewing it. In some cases, simply stopping placing orders, which immediately represents a loss of revenue. In this sense, it is a fundamental metric for obtaining strategic answers about the business, especially when it comes to thinking and acting with a view to the medium and long term.
 
-Dessa forma, prever essa rotatividade de clientes é extremamente importante para qualquer negócio, pois a maioria das empresas com alto faturamento são aquelas que possuem altas taxas de retenção. Sean Ellis e Morgan Brown indicam em seu livro, Hacking Growth, que com apenas 5% de taxa de retenção, uma empresa pode aumentar de 25% a 95% de seu lucro.
+In this way, predicting this customer turnover is extremely important for any business, as most companies with high revenue are those with high retention rates. Sean Ellis and Morgan Brown indicate in their book, Hacking Growth, that with just a 5% retention rate, a company can increase from 25% to 95% of its profit.
 
-Os dados para análise foram disponibilizados dentro da plataforma de competições de dados [Kaggle](https://www.kaggle.com/datasets/mervetorkan/churndataset).
+Data for analysis were made available within the data competitions platform [Kaggle](https://www.kaggle.com/datasets/mervetorkan/churndataset).
 
-# 1.0 Problema de Negócio
-TopBank é uma empresa de serviços bancários que opera principalmente em países europeus oferecendo produtos financeiros, desde contas bancárias a investimentos, passando por alguns tipos de seguros e produto de investimento. O principal produto da empresa é uma conta bancária, na qual o cliente pode depositar seu salário, fazer saques, depósitos e transferências para outras contas. Essa conta bancária tem prazo de 12 meses, ou seja, o cliente precisa renovar o contrato da conta para continuar utilizando pelos próximos 12 meses.
+# 1.0 Business Problem
+TopBank is a banking services company that operates mainly in European countries offering financial products, from bank accounts to investments, including some types of insurance and investment products. The company's main product is a bank account, in which the customer can deposit his salary, make withdrawals, deposits and transfers to other accounts. This bank account has a term of 12 months, that is, the customer needs to renew the account contract to continue using it for the next 12 months.
 
-O CFO da empresa bancária possui a necessidade de estudar e entender as possíveis causas da significativa taxa de churn de clientes. Para tanto, ele precisa que alguém desenvolva um modelo de classificação que permita analisar as previsões sobre a taxa especificada. Nesse sentido, tornaria-se possível a viabilização de estratrégias por parte do time de marketing, a fim de maximizar o ROI( Return on investment ) dos clientes. 
+The CFO of the banking company has the need to study and understand the possible causes of the significant customer churn rate. To do so, he needs someone to develop a classification model that allows him to analyze predictions about the specified rate. In this sense, it would become possible for the marketing team to implement strategies in order to maximize the customers' ROI (Return on investment). 
 
-Dessa forma, a ideia deste projeto é auxiliar o CFO na tomada de decisão, provendo resultados das previsões de cada cliente do banco em probalidade, possibilitando que o CFO consulte as probabilidades de cada cliente via API.
+In this way, the idea of this project is to assist the CFO in decision making, providing forecast results for each bank customer in probability, enabling the CFO to consult the probabilities of each customer via API.
 
-# 2.0 Premissas de Negócio
+# 2.0 Business Assumptions
 
-Para a construção da solução, foram consideradas as seguintes premissas:
+For the construction of the solution, the following assumptions were considered:
 
-- Receita do TopBank: De acordo com a equipe de análise do TopBank, cada cliente com conta bancária retorna um valor monetário de 3% do valor estimado do salário se o salário for menor que a média e 5% se esse salário for maior que a média, durante o período atual de seu contrato de conta. Este valor é calculado anualmente.
+- TopBank Revenue: According to TopBank's analysis team, each client with a bank account returns a monetary value of 3% of the estimated salary value if the salary is less than the average and 5% if that salary is more than the average, during the period current account agreement. This value is calculated annually.
 
-- Abordagem de combate ao churn: Uma medida para combater o churn é dar um incentivo financeiro aos clientes para que considerem a renovação de seus contratos. No nosso caso, os cupons de desconto foram selecionados para serem o incentivo financeiro do plano TopBank contra o problema do churning.
+- Approach to fighting churn: One measure to fight churn is to give customers a financial incentive to consider renewing their contracts. In our case, discount coupons were selected to be TopBank's financial incentive against the churning problem.
 
-- Orçamento de incentivo financeiro: a empresa permite que o time de marketing possa gastar apenas uma quantia máxima de $ 10.000 em cupons, o que nos obriga a selecionar apenas alguns clientes para maximizar o ROI (Return Over Investiment).
+- Financial incentive budget: The company allows the marketing team to spend only a maximum amount of $10,000 on coupons, which forces us to select only a few customers to maximize ROI (Return Over Investment).
 
-- Destino dos cupons: De acordo com o orçamento apresentado pela equipe de marketing, decidi por selecionar entre os 100, 200 e 400 primeiros clientes com maior probabilidade de churn, cupons de desconto no valor de 100, 50 e 25, respectivamente.
+- Destination of coupons: According to the budget presented by the marketing team, I decided to select among the first 100, 200 and 400 customers with the highest probability of churn, discount coupons worth 100, 50 and 25, respectively.
 
 
-## 2.1 Descrição dos dados
+## 2.1 Data Description
 
 | Column            | Description                                                                                                                             |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| `RowNumber`       | Número total de colunas do dataset                                                                                                                                  |
-| `CustomerId`      | Identificador único do cliente                                                                                                                           |
-| `Surname`         | Último nome do cliente                                                                                                                    |
-| `CreditScore`     | Score do cartão do cliente                                                                                                                 |
-| `Geography`       | Localidade ( País ) do cliente                                                                                                        |
-| `Gender`          | Gênero do cliente                                                                                                                      |
-| `Age`             | Idade do cliente                                                                                                                         |
-| `Tenure`          | Quantidade de anos que o cliente contrata serviços com o banco                                                                                |
-| `Balande`         | Saldo atual do cliente em sua conta no banco                                                                                          |
-| `NumOfProducts`   | Quantidade de produtos que o cliente comprou                                                                      |
-| `HasCrCard`       | Se o cliente possui ( 1 ) cartão de crédito ou não ( 0 )
-| `IsActiveMember`  | Se o cliente é ativo ( Nos últimos 12 meses )                                                     |
-| `EstimatedSalary` | Salário anual estimado do cliente                                                                                                         |
-| `Exited`          | Se o cliente entrou em churn ( 1 ) ou não ( 0 )
+| `RowNumber`       | Total number of columns in the dataset |
+| `CustomerId` | Customer Unique Identifier |
+| `Surname` | Customer Last Name |
+| `CreditScore` | Customer Card Score |
+| `Geography` | Location (Country) of the customer                                                                                                     |
+| `Gender`          | Customer Gender |
+| `Age` | Customer age |
+| `Tenure` | Number of years that the customer contracts services with the bank |
+| `Balande` | Customer's current balance on their bank account |
+| `NumOfProducts` | Number of products the customer has purchased |
+| `HasCrCard` | Whether the customer has (1) a credit card or not (0)
+| `IsActiveMember` | Whether the customer is active (Last 12 months) |
+| `EstimatedSalary` | Client's Estimated Annual Salary |
+| `Exited` | Whether the customer churns (1) or not (0)
 
-# 3.0 Estratégia da Solução
+# 3.0 Solution Strategy
 
 ![](reports/figures/mind_map.png)
 
-A estratégia utiliza o método CRISP-DS, que consiste em 9 passos ciclicos, onde a cada iteração dos nove passos, o resultado de negócio vai sendo aperfeiçoado, visando entregas cada vez mais rápidas e cada vez com mais qualidade e acertivas, possibilitando assim que as equipes que irão utilizar os resultados desenvolvidos tenham um produto um produto minimamente utilizável na primeira entrega e que é aperfeiçoado ao longo do tempo.
+The strategy uses the CRISP-DS method, which consists of 9 cyclical steps, where at each iteration of the nine steps, the business result is being improved, aiming for increasingly faster deliveries and increasingly more quality and accuracy, thus enabling the teams that will use the developed results have a product that is minimally usable in the first delivery and that is perfected over time.
 
 # 4.0 Insights
 
@@ -61,21 +61,21 @@ A estratégia utiliza o método CRISP-DS, que consiste em 9 passos ciclicos, ond
 
 ## 4.2 Top 3 Insights
 
-**Hipótese 01: A idade do cliente influencia em possível churn?**
+**Hypothesis 01: Does the age of the customer influence possible churn?**
 
-**VERDADEIRA. A idade influencia de forma significativa, haja vista que pessoas mais idosas tendem a realizar o churn ( A partir dos 48/49 anos )**
+**TRUE. Age has a significant influence, given that older people tend to churn ( From 48/49 years old )**
 
 ![](reports/figures/age_in.png)
 
-**Hipótese 02: O score do cliente influencia em possível churn?**
+**Hypothesis 02: Does the customer's score influence possible churn?**
 
-**FALSA. Não há diferença significativa no churn dos clientes com alto ou baixo score do cartão**
+**FALSE. There is no significant difference in the churn of customers with high or low card scores**
 
 ![](reports/figures/score_in.png)
 
-**Hipótese 03: O número de produtos comprados pelo cliente influencia em possível churn?**
+**Hypothesis 03: Does the number of products purchased by the customer influence possible churn?**
 
-**VERDADEIRA. O número de produtos influencia em possível churn, haja vista que pessoas com menos produtos tendem a realizar o churn ( Churn rate acima da média )**
+**TRUE. The number of products influences a possible churn, given that people with fewer products tend to churn ( churn rate above average )**
 
 ![](reports/figures/num_in.png)
 
@@ -83,9 +83,9 @@ A estratégia utiliza o método CRISP-DS, que consiste em 9 passos ciclicos, ond
 
 # 5.0 Machine Learning 
 
-## 5.1 Técnicas e Performance
+## 5.1 Techniques and Performance
 
-Para fazer a previsão de vendas, foram utilizados 5 algoritmos de Machine Learning:
+To forecast sales, 5 Machine Learning algorithms were used:
 
 - Linear Regression
 - Random Forest Classifier
@@ -93,72 +93,68 @@ Para fazer a previsão de vendas, foram utilizados 5 algoritmos de Machine Learn
 - XGBoost Classifier
 - KNN
 
-Após os testes com os algoritmos selecionados, foi utilizado a técnica de Cross Validation para validar os resultados e garantir a performance real de cada uma dos modelo utilizados.
+After testing the selected algorithms, the Cross Validation technique was used to validate the results and ensure the actual performance of each of the models used.
 
-Além disso, foi implementado o método de seleção de features Boruta para auxiliar na escolha das features mais importantes, porém notou-se uma queda de performance e qualidade do modelo. Assim, o método não foi utilizado.
+In addition, the Boruta feature selection method was implemented to assist in choosing the most important features, but a drop in performance and quality of the model was noted. Therefore, the method was not used.
 
-Após fazer o treinamento dos modelos sobre os dados de treino e ter feito o Cross-Validation, bem como analisar a acurácia, f1_score, recall e precision, optei por usar o XGBoost Classifier por apresentar performances incríveis, beirando os 91% com o fine tuning na métrica f1_score.
+After training the models on the training data and having done the Cross-Validation, as well as analyzing the accuracy, f1_score, recall and precision, I chose to use the XGBoost Classifier for presenting incredible performances, close to 85% in the f1_score metric.
 
-Ranking algoritmos sem Cross Validation:
+Ranking algorithms without Cross Validation:
 
-![](reports/figures/single_rank_performance.png)
+![](reports/figures/simple.png)
 
-Ranking algoritmos com Cross Validation:
+Ranking Algorithms with Cross Validation:
 
-![](reports/figures/crossval_rank_performance.png)
+![](reports/figures/cv.png)
 
-Após implementar o Hyperparamether Fine Tuning, utilizando o Grid Search, XGBoost apresentou as seguintes métricas:
-
-![](reports/figures/final_model.png)
-
-## 5.2 Principais Gráficos
+## 5.2 Main Graphs
 
 ### 5.2.1 Cumulative Gain Curves
 
-A curva de ganhos cumulativos é uma curva de avaliação que avalia o desempenho do modelo e compara os resultados com a escolha aleatória ( Baseline ). Mostra a porcentagem de alvos atingidos ao considerar um determinado percentual da população com maior probabilidade de ser alvo de acordo com o modelo.
+The cumulative gains curve is an evaluation curve that evaluates the performance of the model and compares the results with the random choice ( Baseline ). Shows the percentage of targets hit when considering a certain percentage of the population most likely to be targeted according to the model.
 
-![](reports/figures/cumulative_gain2.png)
+![](reports/figures/cumulative.png)
 
 ### 5.2.2 Lift Curves
 
-O gráfico de curva de elevação é derivado do gráfico de ganhos cumulativos. Os valores no eixo y correspondem à razão do ganho cumulativo de cada curva para a linha de base.
+The lift curve graph is derived from the cumulative earnings graph. Values ​​on the y-axis correspond to the ratio of each curve's cumulative gain to the baseline.
 
-![](reports/figures/lift_curve.png)
+![](reports/figures/lift.png)
 
 ### 5.2.3 ROC AUC Curve
 
-A curva ROC mostra o desempenho de um modelo em todos os limites de classificação. A área sob a curva mostra o quanto o algoritmo é capaz de distinguir entre as classes.
+The ROC curve shows how a model performs across all rating thresholds. The area under the curve shows how well the algorithm is able to distinguish between classes.
 
-![](reports/figures/roc_auc_curve.png)
+![](reports/figures/roc_auc.png)
 
-# 6.0 Resultados Financeiros
+# 6.0 Business Results
 
-Dentre os cupons sugeridos, optei pelo cupom de $ 25, uma vez que notou-se um ROI ( Return on Investment) mais significativo entre os demais, apresentando um valor bruto, como média entre os cenários analisados, de $ 489070.00, o que representa um ROI de 4891%.
+Among the suggested coupons, I opted for the $25 coupon, since there was a more significant ROI (Return on Investment) among the others, presenting a gross value, as an average between the analyzed scenarios, of $489070.00, which represents an ROI of 4891%.
 
 ![](reports/figures/cupom_25.png)
 
 ![](reports/figures/bss_conclusion.png)
 
-# 7.0 Conclusões
+# 7.0 Conclusions
 
-Conforme pôde ser verificado, o projeto resolveu o problema inicial, que era a previsão do churn de clientes do banco, a partir de um modelo de classificação. O modelo escolhido foi o XGBoost, que alcançou excelentes métricas ( 91% no F1 score, por exemplo).
+As can be seen, the project solved the initial problem, which was predicting the churn of bank customers, based on a classification model. The model chosen was XGBoost, which achieved excellent metrics (85,1% in the F1 score, for example).
 
-Consegui também formular um plano de ação para resolver o problema do churning com base no envio de cupons de desconto aos clientes de acordo com sua probabilidade de churn e a maximização do ROI.
+I was also able to formulate an action plan to solve the churning problem based on sending discount coupons to customers according to their churn probability and ROI maximization.
 
-Ademais, concluimos importantes insights desconhecidos pelo CFO sobre o negócio e estabelecemos estratégias financeiras para não somente controlar a taxa de churn, como também melhorá-la no ponto de vista do negócio.
+In addition, we concluded important insights unknown to the CFO about the business and established financial strategies to not only control the churn rate, but also improve it from the business point of view.
 
-Outro ponto importante de destacar é que com a solução criada, o CFO pode agora consultar a taxa de churn via API, uma maneira, portanto, mais ágil e fácil para a tomada de decisão.
+Another important point to highlight is that with the solution created, the CFO can now consult the churn rate via API, therefore, a more agile and easier way for decision making.
 
-# 8.0 Lições Aprendidas
+# 8.0 Lessons Learned
 
-- Priorizar tarefas e soluções
-- Desenvolver soluções de forma cíclica, entregando assim resultados de forma mais ágil e eficiente
-- Gerenciando dados desbalanceados com SMOTE
-- Possibilidade de consulta ágil e profissional dos dados preditivos via API
+- Prioritize tasks and solutions
+- Develop solutions in a cyclical way, thus delivering results in a more agile and efficient way
+- Managing unbalanced data with Cluster Centroids
+- Possibility of agile and professional consultation of predictive data via API
 
-# 9.0 Próximos Passos
+# 9.0 Next Steps
 
-- Responder a novas hipóteses de negócios para entender melhor os dados e as relações de recursos e criar novas hipóteses para verificar outras relações de recursos
-- Aplicar técnicas de programação para melhorar o desempenho da solução criada
-- Antecipação da divisão entre treino e teste para antes da preparação dos dados
-- Criação de novas funcionalidades para enriquecer os dados, como consulta via Google Sheets
+- Respond to new business hypotheses to better understand data and resource relationships and create new hypotheses to verify other resource relationships
+- Apply programming techniques to improve the performance of the created solution
+- Anticipation of the split between training and testing before data preparation
+- Creation of new functionalities to enrich the data, such as consultation via Google Sheets

@@ -145,6 +145,8 @@ In addition, we concluded important insights unknown to the CFO about the busine
 
 Another important point to highlight is that with the solution created, the CFO can now consult the churn rate via API, therefore, a more agile and easier way for decision making.
 
+In addition, some insights report carried out in [Power BI](https://github.com/luishmq/churn_clients_predict/blob/master/reports/figures/insights.pdf) can be viewed by clicking on the hyperlink.
+
 # 8.0 Lessons Learned
 
 - Prioritize tasks and solutions

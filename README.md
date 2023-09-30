@@ -23,9 +23,9 @@ For the construction of the solution, the following assumptions were considered:
 
 - Approach to fighting churn: One measure to fight churn is to give customers a financial incentive to consider renewing their contracts. In our case, discount coupons were selected to be TopBank's financial incentive against the churning problem.
 
-- Financial incentive budget: The company allows the marketing team to spend only a maximum amount of $10,000 on coupons, which forces us to select only a few customers to maximize ROI (Return Over Investment).
+- Financial incentive budget: The company allows the marketing team to spend the amount it deems necessary, as long as ROI (Return Over Investment) is maximized.
 
-- Destination of coupons: According to the budget presented by the marketing team, I decided to select among the first 100, 200 and 400 customers with the highest probability of churn, discount coupons worth 100, 50 and 25, respectively.
+- Destination of coupons: According to the marketing team, a discount coupon worth R$250.00 was selected for all customers with a churn probability greater than 80%, in order to try as much as possible to avoid possible churn.
 
 
 ## 2.1 Data Description
@@ -101,7 +101,7 @@ After training the models on the training data and having done the Cross-Validat
 
 Ranking algorithms without Cross Validation:
 
-![](reports/figures/simple.png)
+![](reports/figures/rank_algs.png)
 
 Ranking Algorithms with Cross Validation:
 
@@ -113,33 +113,31 @@ Ranking Algorithms with Cross Validation:
 
 The cumulative gains curve is an evaluation curve that evaluates the performance of the model and compares the results with the random choice ( Baseline ). Shows the percentage of targets hit when considering a certain percentage of the population most likely to be targeted according to the model.
 
-![](reports/figures/cumulative.png)
+![](reports/figures/gains.png)
 
 ### 5.2.2 Lift Curves
 
 The lift curve graph is derived from the cumulative earnings graph. Values ​​on the y-axis correspond to the ratio of each curve's cumulative gain to the baseline.
 
-![](reports/figures/lift.png)
+![](reports/figures/lifts.png)
 
 ### 5.2.3 ROC AUC Curve
 
 The ROC curve shows how a model performs across all rating thresholds. The area under the curve shows how well the algorithm is able to distinguish between classes.
 
-![](reports/figures/roc_auc.png)
+![](reports/figures/rocs.png)
 
 # 6.0 Business Results
 
-Among the suggested coupons, I opted for the $25 coupon, since there was a more significant ROI (Return on Investment) among the others, presenting a gross value, as an average between the analyzed scenarios, of $489070.00, which represents an ROI of 4891%.
+A discount of R$ 250.00 was applied to the 3082 customers with the highest probability of churn (> 80%) and we obtained a final profit, as the average of the analyzed scenarios, of R$ 2.785.202,00, which represents an ROI of 361%.
 
-![](reports/figures/cupom_25.png)
-
-![](reports/figures/bss_conclusion.png)
+![](reports/figures/bus_conc.png)
 
 # 7.0 Conclusions
 
 As can be seen, the project solved the initial problem, which was predicting the churn of bank customers, based on a classification model. The model chosen was XGBoost, which achieved excellent metrics (85,1% in the F1 score, for example).
 
-I was also able to formulate an action plan to solve the churning problem based on sending discount coupons to customers according to their churn probability and ROI maximization.
+I was also able to formulate an action plan to solve the churning problem based on sending discount coupons to customers with high churn probability and ROI maximization.
 
 In addition, we concluded important insights unknown to the CFO about the business and established financial strategies to not only control the churn rate, but also improve it from the business point of view.
 

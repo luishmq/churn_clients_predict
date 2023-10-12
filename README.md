@@ -1,4 +1,4 @@
-# Forecast - Custumer Churn 🔥
+# Forecast - Customer Churn 🔥
 
 ![](reports/figures/churn_img2.png)
 
@@ -97,15 +97,15 @@ After testing the selected algorithms, the Cross Validation technique was used t
 
 In addition, the Boruta feature selection method was implemented to assist in choosing the most important features, but a drop in performance and quality of the model was noted. Therefore, the method was not used.
 
-After training the models on the training data and having done the Cross-Validation, as well as analyzing the accuracy, f1_score, recall and precision, I chose to use the XGBoost Classifier for presenting incredible performances, close to 85% in the f1_score metric.
+After training the models on the training data and having done the Cross-Validation, as well as analyzing the accuracy, f1_score, recall and precision, I chose to use the XGBoost Classifier for presenting incredible performances, close to 90% in the f1_score metric.
 
 Ranking algorithms without Cross Validation:
 
-![](reports/figures/rank_algs.png)
+![](reports/figures/single_results.png)
 
 Ranking Algorithms with Cross Validation:
 
-![](reports/figures/cv.png)
+![](reports/figures/cv_results.png)
 
 ## 5.2 Main Graphs
 
@@ -113,19 +113,19 @@ Ranking Algorithms with Cross Validation:
 
 The cumulative gains curve is an evaluation curve that evaluates the performance of the model and compares the results with the random choice ( Baseline ). Shows the percentage of targets hit when considering a certain percentage of the population most likely to be targeted according to the model.
 
-![](reports/figures/gains.png)
+![](reports/figures/cumu_gains.png)
 
 ### 5.2.2 Lift Curves
 
 The lift curve graph is derived from the cumulative earnings graph. Values ​​on the y-axis correspond to the ratio of each curve's cumulative gain to the baseline.
 
-![](reports/figures/lifts.png)
+![](reports/figures/lift_curves.png)
 
 ### 5.2.3 ROC AUC Curve
 
 The ROC curve shows how a model performs across all rating thresholds. The area under the curve shows how well the algorithm is able to distinguish between classes.
 
-![](reports/figures/rocs.png)
+![](reports/figures/roc_aucs.png)
 
 # 6.0 Business Results
 
@@ -135,7 +135,7 @@ A discount of R$ 250.00 was applied to the 3082 customers with the highest proba
 
 # 7.0 Conclusions
 
-As can be seen, the project solved the initial problem, which was predicting the churn of bank customers, based on a classification model. The model chosen was XGBoost, which achieved excellent metrics (85,1% in the F1 score, for example).
+As can be seen, the project solved the initial problem, which was predicting the churn of bank customers, based on a classification model. The model chosen was XGBoost, which achieved excellent metrics (89,4% in the F1 score, for example).
 
 I was also able to formulate an action plan to solve the churning problem based on sending discount coupons to customers with high churn probability and ROI maximization.
 
@@ -149,12 +149,11 @@ In addition, some insights report carried out in [Power BI](https://github.com/l
 
 - Prioritize tasks and solutions
 - Develop solutions in a cyclical way, thus delivering results in a more agile and efficient way
-- Managing unbalanced data with Cluster Centroids
+- Managing unbalanced data with SmoteTomek
 - Possibility of agile and professional consultation of predictive data via API
 
 # 9.0 Next Steps
 
 - Respond to new business hypotheses to better understand data and resource relationships and create new hypotheses to verify other resource relationships
 - Apply programming techniques to improve the performance of the created solution
-- Anticipation of the split between training and testing before data preparation
 - Creation of new functionalities to enrich the data, such as consultation via Google Sheets
